@@ -1,0 +1,289 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
+-- --------------------------------------------------
+-- Date Created: 01/20/2013 21:05:00
+-- Generated from EDMX file: C:\Users\Admin\Documents\Visual Studio 2010\Projects\StegApp\StegApp\DataAccess\DataModel\Database.edmx
+-- --------------------------------------------------
+
+USE MASTER;
+GO
+CREATE DATABASE DavidFlynnDatabase
+ON
+( NAME = DavidFlynnDatabase_Dat,
+FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL10_50.SQLEXPRESS\MSSQL\DATA\DavidFlynnDatabaseDat.mdf',
+SIZE=20MB,
+MAXSIZE=50MB,
+FILEGROWTH=5MB
+)
+LOG ON
+( NAME = DavidFlynnDatabaseLog,
+FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL10_50.SQLEXPRESS\MSSQL\DATA\DavidFlynnDatabaseDat.ldf',
+SIZE=20MB,
+MAXSIZE=50MB,
+FILEGROWTH=5MB
+);
+
+SET QUOTED_IDENTIFIER OFF;
+GO
+USE [DavidFlynnDatabase];
+GO
+IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
+GO
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- --------------------------------------------------
+
+IF OBJECT_ID(N'[DavidFlynn].[FK_Log_EndUserId]', 'F') IS NOT NULL
+    ALTER TABLE [DavidFlynn].[Log] DROP CONSTRAINT [FK_Log_EndUserId];
+GO
+IF OBJECT_ID(N'[DavidFlynn].[FK_Log_Log]', 'F') IS NOT NULL
+    ALTER TABLE [DavidFlynn].[Log] DROP CONSTRAINT [FK_Log_Log];
+GO
+IF OBJECT_ID(N'[DavidFlynn].[FK_Log_PictureId]', 'F') IS NOT NULL
+    ALTER TABLE [DavidFlynn].[Log] DROP CONSTRAINT [FK_Log_PictureId];
+GO
+IF OBJECT_ID(N'[DavidFlynn].[FK_Log_User]', 'F') IS NOT NULL
+    ALTER TABLE [DavidFlynn].[Log] DROP CONSTRAINT [FK_Log_User];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- --------------------------------------------------
+
+IF OBJECT_ID(N'[DavidFlynn].[Log]', 'U') IS NOT NULL
+    DROP TABLE [DavidFlynn].[Log];
+GO
+IF OBJECT_ID(N'[DavidFlynn].[Picture]', 'U') IS NOT NULL
+    DROP TABLE [DavidFlynn].[Picture];
+GO
+IF OBJECT_ID(N'[DavidFlynn].[PictureType]', 'U') IS NOT NULL
+    DROP TABLE [DavidFlynn].[PictureType];
+GO
+IF OBJECT_ID(N'[DavidFlynn].[User]', 'U') IS NOT NULL
+    DROP TABLE [DavidFlynn].[User];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Logs'
+CREATE TABLE [dbo].[Logs] (
+    [LogId] int IDENTITY(1,1) NOT NULL,
+    [UserId] int  NOT NULL,
+    [SentDatetime] datetime  NOT NULL,
+    [MessageKey] nvarchar(max)  NOT NULL,
+    [PictureId] int  NULL,
+    [EndUserID] int  NOT NULL
+);
+GO
+
+-- Creating table 'Users'
+CREATE TABLE [dbo].[Users] (
+    [UserId] int IDENTITY(1,1) NOT NULL,
+    [Username] nvarchar(50)  NOT NULL,
+    [Password] nvarchar(500)  NOT NULL,
+    [Firstname] nvarchar(50)  NOT NULL,
+    [Lastname] nvarchar(50)  NOT NULL,
+    [Town] nchar(10)  NULL,
+    [County] nchar(10)  NULL,
+    [Country] nchar(10)  NULL
+);
+GO
+
+-- Creating table 'PictureTypes'
+CREATE TABLE [dbo].[PictureTypes] (
+    [PictureTypeId] int IDENTITY(1,1) NOT NULL,
+    [TypeDescription] nchar(10)  NOT NULL
+);
+GO
+
+-- Creating table 'Pictures'
+CREATE TABLE [dbo].[Pictures] (
+    [PictureId] int IDENTITY(1,1) NOT NULL,
+    [PictureTypeID] int  NOT NULL,
+    [PictureName] nchar(10)  NOT NULL,
+    [PictureData] varbinary(max)  NOT NULL,
+    [PictureStatus] bit  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [LogId] in table 'Logs'
+ALTER TABLE [dbo].[Logs]
+ADD CONSTRAINT [PK_Logs]
+    PRIMARY KEY CLUSTERED ([LogId] ASC);
+GO
+
+-- Creating primary key on [UserId] in table 'Users'
+ALTER TABLE [dbo].[Users]
+ADD CONSTRAINT [PK_Users]
+    PRIMARY KEY CLUSTERED ([UserId] ASC);
+GO
+
+-- Creating primary key on [PictureTypeId] in table 'PictureTypes'
+ALTER TABLE [dbo].[PictureTypes]
+ADD CONSTRAINT [PK_PictureTypes]
+    PRIMARY KEY CLUSTERED ([PictureTypeId] ASC);
+GO
+
+-- Creating primary key on [PictureId] in table 'Pictures'
+ALTER TABLE [dbo].[Pictures]
+ADD CONSTRAINT [PK_Pictures]
+    PRIMARY KEY CLUSTERED ([PictureId] ASC);
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [UserId] in table 'Logs'
+ALTER TABLE [dbo].[Logs]
+ADD CONSTRAINT [FK_Log_UserId]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([UserId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Log_UserId'
+CREATE INDEX [IX_FK_Log_UserId]
+ON [dbo].[Logs]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [LogId] in table 'Logs'
+ALTER TABLE [dbo].[Logs]
+ADD CONSTRAINT [FK_Log_Log]
+    FOREIGN KEY ([LogId])
+    REFERENCES [dbo].[Logs]
+        ([LogId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [EndUserID] in table 'Logs'
+ALTER TABLE [dbo].[Logs]
+ADD CONSTRAINT [FK_Log_EndUserId]
+    FOREIGN KEY ([EndUserID])
+    REFERENCES [dbo].[Users]
+        ([UserId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Log_EndUserId'
+CREATE INDEX [IX_FK_Log_EndUserId]
+ON [dbo].[Logs]
+    ([EndUserID]);
+GO
+
+-- Creating foreign key on [PictureId] in table 'Logs'
+ALTER TABLE [dbo].[Logs]
+ADD CONSTRAINT [FK_Log_PictureId]
+    FOREIGN KEY ([PictureId])
+    REFERENCES [dbo].[Pictures]
+        ([PictureId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Log_PictureId'
+CREATE INDEX [IX_FK_Log_PictureId]
+ON [dbo].[Logs]
+    ([PictureId]);
+GO
+
+-- Creating foreign key on [PictureTypeID] in table 'Pictures'
+ALTER TABLE [dbo].[Pictures]
+ADD CONSTRAINT [FK_PictureType_Picture]
+    FOREIGN KEY ([PictureTypeID])
+    REFERENCES [dbo].[PictureTypes]
+        ([PictureTypeId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PictureType_Picture'
+CREATE INDEX [IX_FK_PictureType_Picture]
+ON [dbo].[Pictures]
+    ([PictureTypeID]);
+GO
+
+Use DavidflynnDatabase
+
+set IDENTITY_INSERT dbo.PictureTypes ON
+insert into PictureTypes(PictureTypeId,TypeDescription)
+select 1,'Animals'
+insert into PictureTypes(PictureTypeId,TypeDescription)
+select 2,'Earth'
+insert into PictureTypes(PictureTypeId,TypeDescription)
+select 3,'Sea'
+insert into PictureTypes(PictureTypeId,TypeDescription)
+select 4,'Sky'
+insert into PictureTypes(PictureTypeId,TypeDescription)
+select 5,'General'
+set IDENTITY_INSERT dbo.Picturetypes off
+
+set IDENTITY_INSERT dbo.Pictures ON
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 30, 'sky1', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Animals\Cat.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 31, 'chimp', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Animals\chimp.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 32, 'dog', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Animals\Dog.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 33, 'frog', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Animals\Frog.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 34, 'monkey', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Animals\Monkey.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 35, 'e1', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Earth\earth1.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 36, 'e2', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Earth\Earth2.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 37, 'e3', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Earth\earth3.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 38, 'e4', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Earth\Earth4.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 39, 'e5', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Earth\earth-17.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 40, 'e6', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Earth\MilkyWay.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 45, 'waves', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sea\Waves.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 46, 'e2', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sea\SouthChinaSea.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 47, 'e3', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sea\SeaSparkle.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 48, 'e4', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sea\sea_of_galilee.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 49, 'e5', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sea\sea1.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 54, 'blue_sky', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sky\blue_sky.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 55, 'MoonSun', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sky\MoonSunrise.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 56, 'sky-04', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sky\sky-04.bmp', Single_Blob) as PictureData
+INSERT INTO Pictures (PictureId, PictureName,PictureTypeID,PictureStatus,PictureData) 
+SELECT 57, 'sky_blue', 1,1,BulkColumn 
+FROM Openrowset( Bulk 'C:\Sky\sky_blue.bmp', Single_Blob) as PictureData
+set IDENTITY_INSERT dbo.Pictures off
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------

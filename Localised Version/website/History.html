@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>	
+	<link rel="StyleSheet" type="text/css" href="steg_2.css"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<meta name="description" content="This is a amateur website about Steganography"/>
+	<meta name="keywords" content="Steganography"/>
+	<meta http-equiv="Content-Language" content="en"/>
+	<!-- General Heading with link, css & meta data. Notice i use a h1 element(in the body element) for the title
+	,the reason been: title will not workI researched this online but to no avail plus i seek assistance in the
+	lab but we were unable to resolve it. Still it has to be left in as it will generate a error in the validator
+	otherwise. Wave will generate a error as it is blank but there is explicit heading when one opens this webpage.-->
+</head>
+
+
+
+<body lang="en">
+	<h1 class="default_h1">History Of Steganography</h1>
+	
+	<div id="menu_bar">
+	<!-- This div creates a menu bar with additional styling for it's ul and li elements. Bullets are removed by the
+	list-style attribute(ul). The menu goes horizontal by using float attribute(li) and then specifying each link @ 25%-->	
+	<ul>
+		<li><a href="./index.html">Home</a></li>
+		<li><a href="./History.html">History</a></li>
+		<li><a href="./Intro.html">Introduction to Project & Steganography</a></li>
+	    <!--<li><a href="./future.html">Future</a></li>-->
+	</ul>
+	</div>
+      
+	<p class="special_p">
+	<!-- I used this class to add a bit styling as regards color, border etc. But it is also usefull in
+	centering other elements such as images, iframes etc., which can be tricky to do sometimes. Unsure if
+	it is the most efficient way but it will suffice for the moment. I simply used the text align attribute
+	set to center.-->
+      
+      </p>
+	
+	<p class="special_p">
+	Throughout history, a multitude of methods and variations have been used to hide information. 
+	David Kahn's The Codebreakers provides an excellent accounting of this history [Kahn67]. Bruce Norman
+	recounts numerous tales of cryptography and steganography during times of war in Secret Warfare: 
+	The Battle of Codes and Ciphers. One of the first documents describing steganography is from the Histories of Herodotus. In ancient
+	Greece, text was written on wax covered tablets. In one story Demeratus wanted to notify Sparta that 
+	Xerxes intended to invade Greece. To avoid capture, he scraped the wax off of the tablets and wrote a message 
+	on the underlying wood. He then covered the tablets with wax again. The tablets appeared to be blank and unused 
+	so they passed inspection by sentries without question. Another ingenious method was to shave the head of a
+	messenger and tattoo a message or image on the messengers head. After allowing his hair to grow, the message 
+	would be undetected until the head was shaved again. Another common form of invisible writing is through the 
+	use of Invisible inks. Such inks were used with much success as recently as WWII. An innocent letter may contain
+	a very different message written between the lines [Zim48]. Early in WWII steganographic technology consisted 
+	almost exclusively of invisible inks [Kahn67]. Common sources for invisible inks are milk, vinegar, fruit juices 
+	and urine. All of these darken when heated. With the improvement of technology and the ease as to the decoding of
+	these invisible inks, more sophisticated inks were developed which react to various chemicals. Some messages had 
+	to be "developed" much as photographs are developed with a number of chemicals in processing labs. Null ciphers 
+	(unencrypted messages) were also used. The real message is "camouflaged" in an innocent sounding message. Due to
+	the "sound" of many open coded messages, the suspect communications were detected by mail filters. However "innocent"
+	messages were allowed to flow through. An example of a message containing such a null cipher from [JDJ01] is:<br/>
+	<br/>
+		    Fishing freshwater bends and saltwater<br/>
+		    coasts rewards anyone feeling stressed.<br/>
+		    Resourceful anglers usually find masterful<br/>
+		    leapers fun and admit swordfish rank<br/>
+		    overwhelming anyday.<br/>
+	<br/>
+	By taking the third letter in each word, the following message emerges [Zevon]:<br/>
+	<br/>
+                    Send Lawyers, Guns, and Money.<br/>
+	<br/>
+	The following message was actually sent by a German Spy in WWII [Kahn67]:<br/>
+	<br/>
+                    Apparently neutral's protest is thoroughly discounted<br/>
+                    and ignored.  Isman hard hit.  Blockade issue affects<br/>
+                    pretext for embargo on by products, ejecting suets and<br/>
+                    vegetable oils.<br/>
+	<br/>
+	Taking the second letter in each word the following message emerges:<br/>
+	<br/>
+                    Pershing sails from NY June 1.<br/>
+	<br/>
+	As message detection improved, new technologies were developed which could pass more information and be even less
+	conspicuous. The Germans developed microdot technology which FBI Director J. Edgar Hoover referred to as "the enemy's 
+	masterpiece of espionage." Microdots are photographs the size of a printed period having the clarity of standard-sized 
+	typewritten pages. The first microdots were discovered masquerading as a period on a typed envelope carried by a German 
+	agent in 1941. The message was not hidden, nor encrypted. It was just so small as to not draw attention to itself 
+	(for a while). Besides being so small, microdots permitted the transmission of large amounts of data including drawings 
+	and photographs [Kahn67]. With many methods being discovered and intercepted, the Office of Censorship took extreme actions
+	such as banning flower deliveries which contained delivery dates, crossword puzzles and even report cards as they can all 
+	contain secret messages. Censors even went as far as rewording letters and replacing stamps on envelopes.<br/>
+	<br/>
+	With every discovery of a message hidden using an existing application, a new steganographic application is being devised. 
+	There are even new twists to old methods. Drawings have often been used to conceal or reveal information. It is simple to 
+	encode a message by varying lines, colors or other elements in pictures. Computers take such a method to new dimensions as 
+	we will see later.<br/>
+	<br/>
+	Even the layout of a document can provide information about that document. Brassil et al authored a series of publications 
+	dealing with document identification and marking by modulating the position of lines and words [Brassil-Infocom94, 
+	Brassil- Infocom94, Brassil-CISS95]. Similar techniques can also be used to provide some other "covert" information just 
+	as 0 and 1 are informational bits for a computer. As in one of their examples, word-shifting can be used to help identify an
+	original document [Brassil-CISS95]. Though not applied as discussed in the series by Brassil et al, a similar method can be
+	applied to display an entirely different message. Take the following sentence (S0):<br/>
+	<br/>
+                    We explore new steganographic and cryptographic<br/>
+                    algorithms and techniques throughout the world to<br/>
+                    produce wide variety and security in the electronic web<br/>
+                    called the Internet.<br/>
+	<br/>
+	and apply some word shifting algorithm (this is sentence S1).<br/>
+	<br/>
+                    We explore new steganographic and cryptographic<br/>
+                    algorithms and techniques throughout the world to<br/>
+                    produce wide variety and security in the electronic web <br/>
+                    called the Internet.<br/>
+	<br/>
+	<br/>
+	By overlapping S0 and S1, the following sentence is the result:<br/>
+	<br/>
+                    We explore new steganographic and cryptographic<br/>
+                    algorithms and techniques throughout the world to<br/>
+                    produce wide variety and security in the electronic web<br/>
+                    called the Internet.<br/>
+	<br/>
+	This is achieved by expanding the space before explore, the, wide, and web by one point and condensing the space after explore,
+	world, wide and web by one point in sentence S1. Independently, the sentences containing the shifted words appear harmless, but 
+	combining this with the original sentence produces a different message: explore the world wide web.<br/> 
+	</p>
+		 
+	
+	 
+
+
+</body>
+
+</html>

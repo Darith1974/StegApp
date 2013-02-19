@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="3e7272a7-69d9-464a-b598-dc4eb6b9d985" name="Admin@ADMIN-PC 2013-01-23 00:48:21" runUser="Admin-PC\Admin" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="615e9dae-ad29-4af0-995d-62fcba7df938">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment runDeploymentRoot="Admin_ADMIN-PC 2013-01-23 00_48_21">
+      <DeploymentItem filename="C:\Users\Admin\Documents\Visual Studio 2010\Projects\StegApp\StegApp\bin\Release\WindowsFormsApplication4.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific>
+        <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+          <AssemblyResolution>
+            <TestDirectory useLoadContext="true" />
+          </AssemblyResolution>
+        </UnitTestRunConfig>
+        <WebTestRunConfiguration testTypeId="4e7599fa-5ecb-43e9-a887-cd63cf72d207">
+          <Browser name="Internet Explorer 7.0">
+            <Headers>
+              <Header name="User-Agent" value="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)" />
+              <Header name="Accept" value="*/*" />
+              <Header name="Accept-Language" value="{{$IEAcceptLanguage}}" />
+              <Header name="Accept-Encoding" value="GZIP" />
+            </Headers>
+          </Browser>
+        </WebTestRunConfiguration>
+      </TestTypeSpecific>
+      <AgentRule name="LocalMachineDefaultRole">
+        <DataCollectors>
+          <DataCollector uri="datacollector://microsoft/CodeCoverage/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="Code Coverage">
+            <Configuration>
+              <CodeCoverage xmlns="">
+                <Regular>
+                  <CodeCoverageItem binaryFile="C:\Users\Admin\Documents\Visual Studio 2010\Projects\StegApp\StegApp\StegAppTest\bin\Release\StegAppTest.dll" pdbFile="C:\Users\Admin\Documents\Visual Studio 2010\Projects\StegApp\StegApp\StegAppTest\bin\Release\StegAppTest.instr.pdb" instrumentInPlace="true" />
+                  <CodeCoverageItem binaryFile="C:\Users\Admin\Documents\Visual Studio 2010\Projects\StegApp\StegApp\bin\Release\WindowsFormsApplication4.exe" pdbFile="C:\Users\Admin\Documents\Visual Studio 2010\Projects\StegApp\StegApp\bin\Release\WindowsFormsApplication4.instr.pdb" instrumentInPlace="true" />
+                </Regular>
+              </CodeCoverage>
+            </Configuration>
+          </DataCollector>
+        </DataCollectors>
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-01-23T00:48:21.0500000+00:00" queuing="2013-01-23T00:48:25.8050000+00:00" start="2013-01-23T00:48:26.0260000+00:00" finish="2013-01-23T00:48:34.8840000+00:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <ResultFiles>
+      <ResultFile path="ADMIN-PC\data.coverage" />
+    </ResultFiles>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="RetreiveMessagesTest" storage="c:\users\admin\documents\visual studio 2010\projects\stegapp\stegapp\stegapptest\bin\release\stegapptest.dll" id="63000279-2c21-1a7c-0145-34a6931b8434">
+      <Execution id="7ddc8d44-e603-49d6-aa03-82d7703cce87" />
+      <TestMethod codeBase="C:/Users/Admin/Documents/Visual Studio 2010/Projects/StegApp/StegApp/StegAppTest/bin/Release/StegAppTest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="StegAppTest.DataAccessTest, StegAppTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RetreiveMessagesTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="63000279-2c21-1a7c-0145-34a6931b8434" executionId="7ddc8d44-e603-49d6-aa03-82d7703cce87" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="7ddc8d44-e603-49d6-aa03-82d7703cce87" testId="63000279-2c21-1a7c-0145-34a6931b8434" testName="RetreiveMessagesTest" computerName="ADMIN-PC" duration="00:00:02.6586141" startTime="2013-01-23T00:48:28.7940000+00:00" endTime="2013-01-23T00:48:32.0420000+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7ddc8d44-e603-49d6-aa03-82d7703cce87">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;WindowsFormsApplication4.BusinessObjects.Log&gt;. Actual:&lt;WindowsFormsApplication4.BusinessObjects.Log&gt;. </Message>
+          <StackTrace>   at StegAppTest.DataAccessTest.RetreiveMessagesTest() in C:\Users\Admin\Documents\Visual Studio 2010\Projects\StegApp\StegApp\StegAppTest\DataAccessTest.cs:line 204
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

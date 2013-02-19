@@ -1,0 +1,128 @@
+	
+	
+	html,body{
+	    color:#481706;width:940px;height:560px;margin:auto;background:#A0522D;}
+		/*background-image:url('./images/20.jpg');*/			
+
+	#overall {height:auto;width:auto;padding:auto;background:#d4a539;
+	    height:auto;border-width: medium;border-color: #000000;
+	    border-style:solid;}
+
+	/*This div encomoasses the whole body element. I have used divs to layout this webpage as opposed
+	to tables as there can be compatibity issues. This div contains nested divs which i will explain as we go along*/
+
+	#menu_bar {padding:5px 10px;border-width: medium;background:#FFF5EE;
+		border-color: #000000;border-style:solid;font-color:rgb(0,0,0);}
+
+	/*I created this sidebar to make the webpage look different. Basically this div element is constructed to 
+		float left inside the "overall" div beside the "main_content" div. Width is define at 200px( had issue with %
+		in different browsers). Height set to auto. Bullets are removed by the list style attribute. border and Colors styles
+		accordinally. */
+		
+	#menu_bar ul {margin:0;padding:0;list-style-type:none;
+	    margin:0;padding:0;text-align:center;overflow:hidden;/*color:rgb(255,0,0);*/}
+	    
+	#menu_bar li {display:block;margin:0;padding:0;float:left;width:50%;color:rgb(0,0,0);font-size:1.575em;}
+	
+	div.menu_bar li.Link_black a {
+		color: black;}
+	
+	#main_content {/*float:right;*/width:auto;padding:auto;background:#d4a539;
+	    height:auto;border-width: medium;border-color: #000000;border-style:solid;}
+	
+	/*This is the main div inside the "overall" div.*/
+
+	/*This div creates a menu bar with additional styling for it's ul and li elements. Bullets are removed by the
+		list-style attribute(ul). The menu goes horizontal by using float attribute(li) and then specifying each link @ 25%*/
+	    
+	#sidebar {float:left;width:200px;padding:auto;background:#d4a539;height:auto;
+		border-width: medium;border-color: #000000;border-style:ridge;
+		/*background-image:url('./images/TaiChiSymbol.jpg');
+	    background-repeat:repeat;*/}
+
+	/*I created this sidebar to make the webpage look different. Basically this div element is constructed to 
+		float left inside the "overall" div beside the "main_content" div. Width is define at 200px( had issue with %
+		in different browsers). Height set to auto. Bullets are removed by the list style attribute. border and Colors styles
+		accordinally. */
+
+
+	#sidebar ul{list-style-type:none; margin:0;padding:0;}
+
+	#sidebar a{width:150px;display:block;}
+	    
+	body {background-color:#d4a539;}	
+	
+	p:first-letter {color:#ff0000;font-size:xx-large;}
+	
+	*p {text-align:justify;}
+
+	p:a{text-align:center;}
+
+	hr{border-color:black;}
+
+	.default_h1{background-color:#d2B48C;text-align:center;border-width: medium;border-color: #000000;border-style:solid;
+		font-family:"Times New Roman", Times, serif;font:#481706;}
+		
+	<!-- I ceated this class to modify some of the headings-->
+
+	.default_p1{background-color:#c09372;text-align:center;font:#481706;}
+
+	.special_p{background-color:#c09372;text-align:center;border-style:solid;font:#481706;font-size:1.575em;}
+	
+	.special1_p{background-color:#c09372;border-style:solid;font:#481706;}
+	
+	
+
+	/*I used this class to add a bit styling as regards color, border etc. But it is also usefull in
+	 	centering other elements such as images, iframes etc., which can be tricky to do sometimes. Unsure if
+	 	it is the most efficient way but it will suffice for the moment. I simply used the text align attribute
+	 	set to center.*/
+
+	.default_h2{color:rgb(0,0,0);text-align:center;/*text-decoration:blink;*/
+		font-family:"Times New Roman", Times, serif;font-style:italic;
+		font-size:1.575em;background-color:#A65E00;}
+	
+	table{background:#d4a539;}
+
+	<!-- I ceated this class to modify some of the headings-->
+
+
+	/*a:link {color:#FF0000;}*/
+	
+	/*a:link,a:visited{display:block;width:100%;font-weight:bold;color:#FFFFFF;
+		background-color:#98bf21;text-align:center;padding:4px;
+		text-decoration:none;text-transform:uppercase;
+		a:hover,a:active{background-color:#7A991A;}*/
+
+	/*img.center{display: block; margin-left: auto; margin-right:auto; }*/
+
+	.centeredImage{  display: block; margin-left: auto; margin-right:auto; }
+
+	/*.centeredImage{text-align:center;margin-top:0px;margin-bottom:0px;
+		padding:0px;}*/
+
+	/*iframe {border-top: #c00 1px dotted;border-right: #c00 2px dotted;
+		border-left: #c00 2px dotted;border-bottom: #c00 4px dotted;
+		*height:350px;width: 300px;position: absolute;top: 50%;
+		* margin-top: -175px;left: 50%;margin-left: 80px;}*/
+		
+	/*.box{width: 700px;height: 400px;margin: 0px auto -1px auto;}
+		*ul{list-style-type:none;margin:0;padding:0;text-align:center;
+		overflow:hidden;/list-style-image: url('./images/TaiChiSymbol.jpg');*}*/
+
+	/*li{float:left;width:25%;}*/
+
+	/*.box_alpha{width: 80%;height: 80%;margin: 0px auto -1px auto;}*/
+
+	/*.left_column{margin: 0px 20px 0px 20px;width:300px;height:1000px;float:left}*/
+	
+	/*footer {clear:both;padding:5px 10px;background:#cc9;}*/
+	
+	/*#footer p {	margin:0;}*/
+	
+	/*#main_content p{text-align:center;border-style:solid;/border-color:red;}*/
+	
+	/*#main_content a{ text-align:center;}*/
+	
+	
+	

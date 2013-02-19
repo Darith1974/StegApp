@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DavidFlynnDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Logs" EntityType="DavidFlynnDatabaseModel.Log" />
+    <EntitySet Name="Pictures" EntityType="DavidFlynnDatabaseModel.Picture" />
+    <EntitySet Name="PictureTypes" EntityType="DavidFlynnDatabaseModel.PictureType" />
+    <EntitySet Name="Users" EntityType="DavidFlynnDatabaseModel.User" />
+    <AssociationSet Name="FK_Log_EndUserId" Association="DavidFlynnDatabaseModel.FK_Log_EndUserId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Log" Association="DavidFlynnDatabaseModel.FK_Log_Log">
+      <End Role="Logs" EntitySet="Logs" />
+      <End Role="Logs1" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_PictureId" Association="DavidFlynnDatabaseModel.FK_Log_PictureId">
+      <End Role="Pictures" EntitySet="Pictures" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_UserId" Association="DavidFlynnDatabaseModel.FK_Log_UserId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PictureType_Picture" Association="DavidFlynnDatabaseModel.FK_PictureType_Picture">
+      <End Role="PictureTypes" EntitySet="PictureTypes" />
+      <End Role="Pictures" EntitySet="Pictures" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SentDatetime" Type="DateTime" Nullable="false" />
+    <Property Name="MessageKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PictureId" Type="Int32" />
+    <Property Name="EndUserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="DavidFlynnDatabaseModel.FK_Log_EndUserId" FromRole="Logs" ToRole="Users" />
+    <NavigationProperty Name="Logs1" Relationship="DavidFlynnDatabaseModel.FK_Log_Log" FromRole="Logs" ToRole="Logs1" />
+    <NavigationProperty Name="Log1" Relationship="DavidFlynnDatabaseModel.FK_Log_Log" FromRole="Logs1" ToRole="Logs" />
+    <NavigationProperty Name="Picture" Relationship="DavidFlynnDatabaseModel.FK_Log_PictureId" FromRole="Logs" ToRole="Pictures" />
+    <NavigationProperty Name="User1" Relationship="DavidFlynnDatabaseModel.FK_Log_UserId" FromRole="Logs" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="PictureId" />
+    </Key>
+    <Property Name="PictureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PictureTypeID" Type="Int32" Nullable="false" />
+    <Property Name="PictureName" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="PictureData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="PictureStatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Logs" Relationship="DavidFlynnDatabaseModel.FK_Log_PictureId" FromRole="Pictures" ToRole="Logs" />
+    <NavigationProperty Name="PictureType" Relationship="DavidFlynnDatabaseModel.FK_PictureType_Picture" FromRole="Pictures" ToRole="PictureTypes" />
+  </EntityType>
+  <EntityType Name="PictureType">
+    <Key>
+      <PropertyRef Name="PictureTypeId" />
+    </Key>
+    <Property Name="PictureTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeDescription" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Pictures" Relationship="DavidFlynnDatabaseModel.FK_PictureType_Picture" FromRole="PictureTypes" ToRole="Pictures" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Town" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="County" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="Country" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Logs" Relationship="DavidFlynnDatabaseModel.FK_Log_EndUserId" FromRole="Users" ToRole="Logs" />
+    <NavigationProperty Name="Logs1" Relationship="DavidFlynnDatabaseModel.FK_Log_UserId" FromRole="Users" ToRole="Logs" />
+  </EntityType>
+  <Association Name="FK_Log_EndUserId">
+    <End Role="Users" Type="DavidFlynnDatabaseModel.User" Multiplicity="1" />
+    <End Role="Logs" Type="DavidFlynnDatabaseModel.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="EndUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Log">
+    <End Role="Logs" Type="DavidFlynnDatabaseModel.Log" Multiplicity="1" />
+    <End Role="Logs1" Type="DavidFlynnDatabaseModel.Log" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Logs">
+        <PropertyRef Name="LogId" />
+      </Principal>
+      <Dependent Role="Logs1">
+        <PropertyRef Name="LogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_PictureId">
+    <End Role="Pictures" Type="DavidFlynnDatabaseModel.Picture" Multiplicity="0..1" />
+    <End Role="Logs" Type="DavidFlynnDatabaseModel.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pictures">
+        <PropertyRef Name="PictureId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_UserId">
+    <End Role="Users" Type="DavidFlynnDatabaseModel.User" Multiplicity="1" />
+    <End Role="Logs" Type="DavidFlynnDatabaseModel.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PictureType_Picture">
+    <End Role="PictureTypes" Type="DavidFlynnDatabaseModel.PictureType" Multiplicity="1" />
+    <End Role="Pictures" Type="DavidFlynnDatabaseModel.Picture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PictureTypes">
+        <PropertyRef Name="PictureTypeId" />
+      </Principal>
+      <Dependent Role="Pictures">
+        <PropertyRef Name="PictureTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
